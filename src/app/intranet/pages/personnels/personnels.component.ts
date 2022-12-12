@@ -9,11 +9,12 @@ import { CompagnieService } from '../../services/compagnie.service';
 export class PersonnelsComponent implements OnInit {
 
   filtreModelePersonnels:string = '';
-
+  prenom:string='';
   constructor(public compagnie_personnels:CompagnieService) { }
 
   ngOnInit(): void {
     console.log(this.compagnie_personnels.personnels)
+    
   }
 
 }
