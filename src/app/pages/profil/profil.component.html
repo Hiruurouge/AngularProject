@@ -1,8 +1,11 @@
 <section>
-    <h1>
-        {{pp.pages.profil.titre}}
-    </h1>
-    <article>
-        {{pp.pages.profil.contenu}}
-    </article>
+    <h3>Utilisateur {{auth.currentUser?.uid}}</h3>
+    <form (submit)="updateUser()" #f="ngForm">
+        <input [(ngModel)]="user.nom" name="modele">
+        <span class="form-group" *ngFor="let prenom of user.prenoms; let i = index">
+        <input class="form-control" name="prenom" [(ngModel)]="user.prenoms[i]">
+        </span>
+        <input [(ngModel)]="user.statut" type="text" name="statut">
+        <input type="submit" value="Valider">
+    </form>
 </section>

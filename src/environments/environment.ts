@@ -4,14 +4,13 @@
 
 export const environment = {
   firebase: {
-    projectId: 'prendtonvol-c25d2',
-    appId: '1:941566708153:web:31cc508976a52870714e68',
-    databaseURL: 'https://prendtonvol-c25d2-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'prendtonvol-c25d2.appspot.com',
-    locationId: 'europe-west',
-    apiKey: 'AIzaSyAXuFUQ1yx6jNUNQgR95WtEvj_TjEYX_r4',
-    authDomain: 'prendtonvol-c25d2.firebaseapp.com',
-    messagingSenderId: '941566708153',
+    apiKey: "AIzaSyCbg2UB25c5zMgDFJWfXFtoi53YNyNjOQE",
+    authDomain: "prendstonvol-92cae.firebaseapp.com",
+    databaseURL: "https://prendstonvol-92cae-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "prendstonvol-92cae",
+    storageBucket: "prendstonvol-92cae.appspot.com",
+    messagingSenderId: "189105045542",
+    appId: "1:189105045542:web:7ed002f6cd622ecd7226e7"
   },
   production: false
 };

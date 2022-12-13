@@ -11,15 +11,15 @@ export class CompagnieService {
   vols:Array<VolI> = [];
   avions:Array<AvionI> = [];
   personnels:Array<PersonnelI> = [];
-  listeAvions!:Array<{id: string, data: AvionI}>;
+  listeAvions:Array<{id: string, data: AvionI}>=[];
 
 
 
 
   constructor(private readonly http:HttpClient, private bdd:Firestore) {
     this.getVols()
-    this.getAvions()
-    this.getPersonnels()
+    this.getFireAvs()
+    this.getFirePersonnel()
    }
 
   /** 
@@ -46,27 +46,16 @@ export class CompagnieService {
   /** 
   * Récupération des données de personels
   **/
-  
- /* getPersonnels(){
-    this.http.get<Array<PersonnelI>>("assets/data/personnels.json").subscribe(pers =>{
-      console.log("Donnée retourné depuis le fichier json",pers);
-      this.personnels = pers 
+  async getFirePersonnel() {
+    console.log(this.bdd)
+    await getDocs(collection(this.bdd, 'personnels'))
+    .then(pe => {
+      console.log(pe);
+      pe.forEach(p => {
+        this.personnels.push(p.data() as PersonnelI);
+      })
     })
-  } */
-
-  getPersonnels(){
-    this.http.get<Array<PersonnelI>>("assets/data/personnels.json").subscribe({
-        next: (p) => {
-          this.personnels = p;
-        },
-        error: (e) => {
-          console.log(e);
-        },
-        complete: () => {
-          console.log("Chargement de donnée terminée");
-          this.getFireAvs();
-        }
-    })
+    .catch(erreur => console.log("Erreur", erreur));
   }
   /** Requete pour récupérer une collection */
   async getFireAvs(){
@@ -77,6 +66,7 @@ export class CompagnieService {
         console.log(a.id, a.data());
         this.listeAvions.push({id:a.id, data:a.data() as AvionI}); 
         this.avions.push(a.data() as AvionI);
+        console.log(this.listeAvions)
       })
     })
     .catch(erreur => console.log("Erreur", erreur));

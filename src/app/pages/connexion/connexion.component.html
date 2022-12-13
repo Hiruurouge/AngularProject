@@ -9,7 +9,7 @@
         <input name="passe" type="password" #ctlPasse="ngModel" [(ngModel)]="id.passe" required placeholder="Tu as oublié ton mot de passe !">
         <span *ngIf="ctlPasse.invalid">Ce champs est requis</span>
         <span *ngIf="f.valid">le formulaire semble correct</span>
-        <input type="submit" value="Connexion" [disabled]="f.invalid">
+        <input type="submit" class="btn btn-primary" value="Connexion" [disabled]="f.invalid">
         <input type="reset" value="Annuler">
     </form>
 </section>

@@ -15,6 +15,8 @@ export class AvionsComponent implements OnInit {
   constructor(public compagnie_avions:CompagnieService) { }
   ngOnInit(): void {
     console.log(this.compagnie_avions.vols)
+    console.log(this.compagnie_avions.listeAvions)
+    
   }
   selectAvion(code:string | number):void {
     this.avion = this.compagnie_avions.avions.find(av => av.code === code)!;
